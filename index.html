@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Zero Width Space</title>
+</head>
+<body>
+	<button style="width:100%;height:64px;font-size:24px" class="copy">Click Here</button>
+	<script>
+	document.querySelector(".copy").addEventListener("click", function(){
+	  var tempElem = document.createElement('textarea');
+	  tempElem.value = '​';  
+	  document.body.appendChild(tempElem);
+
+	  tempElem.select();
+	  document.execCommand("copy");
+	  document.body.removeChild(tempElem);
+	});
+	</script>
+</body>
+</html>
