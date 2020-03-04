@@ -2,19 +2,55 @@
 <html lang="en"><head>
 <head>
   <title>Zero Width Space</title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
 </head>
 <body>
-  <button style="width:100%;height:64px;font-size:24px" class="copy">Click Here</button>
+  <button class="copy">Click Here to Copy</button>
+  <style>
+    html, body {
+      margin:0;
+      padding:0;
+      width:100%;
+      height:100%;
+      background-color:#ffffff;
+    }
+    .copy {
+      margin:0;
+      padding:0;
+      width:100%;
+      height:100%;
+      cursor:pointer;
+      border:none;
+      font-size:24px;
+      transition-duration:0.4s;
+      background-color:#2B3340;
+      color:#33CC99;
+    }
+    .copy:hover {
+      background-color:#2B3340;
+      color:#33CC99;
+      opacity:0.9;
+    }
+    .copy:active:focus {
+      background-color:#33CC99;
+      color:#33CC99;
+    }
+  </style>
   <script>
-    document.querySelector(".copy").addEventListener("click", function(){
-      var tempElem = document.createElement('textarea');
-      tempElem.value = '​';  
-      document.body.appendChild(tempElem);
-
-      tempElem.select();
+    var body = document.body;
+    body.style.width = document.documentElement.clientWidth;
+    body.style.height = document.documentElement.clientHeight;
+    console.log(window.width);
+    console.log(window.height);
+    var button = document.querySelector(".copy");
+    button.addEventListener("click", function(){
+      var dummy = document.createElement('textarea');
+      dummy.value = '​';
+      document.body.appendChild(dummy);
+      dummy.select();
       document.execCommand("copy");
-      document.body.removeChild(tempElem);
+      document.body.removeChild(dummy);
+      button.innerText = "Copied!"
     });
   </script>
 </body>
